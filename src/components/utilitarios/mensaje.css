@@ -1,0 +1,20 @@
+.message-error {
+    background: #ffe5e5;
+    color: #d83f48;
+    width: 100%;
+    padding: 2px 0;
+}
+
+.message-warning {
+    background: #faefb3;
+    color: #9f6000;
+    width: 100%;
+    padding: 2px 0;
+}
+
+.message-info {
+    background: #77b647;
+    color: #fff;
+    width: 100%;
+    padding: 2px 0;
+}
