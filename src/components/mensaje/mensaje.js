@@ -1,7 +1,7 @@
 import React from 'react'
 import './mensaje.css'
 
-const MESSAGE_TYPES = [ 'error', 'warning', 'info' ];
+const MESSAGE_TYPES = [ 'error', 'warning', 'info', 'none' ];
 class Mensaje extends React.Component {
     renderMessage(message, i) {
         return <p key={i}>{message}</p>
@@ -9,7 +9,7 @@ class Mensaje extends React.Component {
     render() {
         const messages = this.props.messages
         let type = (this.props.type || '').toLowerCase()
-        type = 'message-' + (MESSAGE_TYPES.indexOf(type) > 0 ? type : 'error')
+        type = 'message-' + (MESSAGE_TYPES.indexOf(type) > 0 ? type : 'none')
         console.log(type)
         return (
             <div className={type}>

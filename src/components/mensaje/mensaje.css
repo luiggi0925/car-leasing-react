@@ -3,6 +3,7 @@
     color: #d83f48;
     width: 100%;
     padding: 2px 0;
+    display: block
 }
 
 .message-warning {
@@ -10,6 +11,7 @@
     color: #9f6000;
     width: 100%;
     padding: 2px 0;
+    display: block
 }
 
 .message-info {
@@ -17,4 +19,9 @@
     color: #fff;
     width: 100%;
     padding: 2px 0;
+    display: block
+}
+
+.message-none {
+    display: none
 }

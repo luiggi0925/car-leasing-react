@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import './menu.css'
 
-class Menu extends React.Component {
+export default class Menu extends React.Component {
     render() {
+        const idUsuario = window.sessionStorage.getItem('idUsuario')
         return (
             <div className="menu-wrap">
                 <nav className="menu">
@@ -20,12 +22,11 @@ class Menu extends React.Component {
                             </ul>
                         </li>
                         <li><a href="#">Usuarios</a></li>
-                        <li><a href="#">Mi perfil</a></li>
+                        <li><Link to="/usuarios/registro">Nuevo Usuario</Link></li>
+                        <li><Link to={"/usuarios/" + idUsuario}>Mi Perfil</Link></li>
                     </ul>
                 </nav>
             </div>
         )
     }
 }
-
-export default Menu

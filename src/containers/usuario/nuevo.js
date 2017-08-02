@@ -1,15 +1,13 @@
-import React from 'react'
 import axios from 'axios'
-
-import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import React from 'react'
+import DatePicker from 'react-datepicker'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
-//import Mensaje from '../../components/mensaje/mensaje.js'
-
-import Test from './test.js'
+import './nuevo.css'
 
 class FormNuevoUsuario extends React.Component {
     constructor(props) {
@@ -17,7 +15,6 @@ class FormNuevoUsuario extends React.Component {
         this.state = {
             email: '',
             contrasena: '',
-            verificaContrasena: '',
             nombre: '',
             apellido: '',
             dni: '',
@@ -46,6 +43,7 @@ class FormNuevoUsuario extends React.Component {
     handleSubmit(event) {
         event.preventDefault()
         let data = {
+            contrasena: this.state.contrasena,
             nombre: this.state.nombre,
             apellido: this.state.apellido,
             email: this.state.email,
@@ -59,7 +57,8 @@ class FormNuevoUsuario extends React.Component {
             timeout: 5000,
             headers: {'Content-Type': 'application/json'}
         }).then(response => {
-            alert('Se agregó el usuario. Id: ' + response.id)
+            console.log(response)
+            alert('Se agregó el usuario. Id: ' + response.data.id)
         }).catch(error => {
             alert('No se agregó el usuario. Revisar.')
             console.log(error)
@@ -67,52 +66,53 @@ class FormNuevoUsuario extends React.Component {
     }
     render() {
         return (
-            <form onSubmit={ this.handleSubmit }>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Correo:</td>
-                            <td><input type='email' placeholder='Email' required name='email' value={ this.state.email } onChange={ this.handleInputChange } /></td>
-                        </tr>
-                        <tr>
-                            <td>Contraseña:</td>
-                            <td><input type='text' name='contrasena' required value={ this.state.contrasena } onChange={ this.handleInputChange } /></td>
-                        </tr>
-                        <tr>
-                            <td>Verificar contraseña:</td>
-                            <td><input type='text' name='verificaContrasena' required value={ this.state.verificaContrasena } onChange={ this.handleInputChange } /></td>
-                        </tr>
-                        <tr>
-                            <td>Nombre:</td>
-                            <td><input type='text' name='nombre' required value={ this.state.nombre } onChange={ this.handleInputChange } /></td>
-                        </tr>
-                        <tr>
-                            <td>Apellido:</td>
-                            <td><input type='text' name='apellido' required value={ this.state.apellido } onChange={ this.handleInputChange } /></td>
-                        </tr>
-                        <tr>
-                            <td>Dni:</td>
-                            <td><input type='text' name='dni' required value={ this.state.dni } onChange={ this.handleInputChange } /></td>
-                        </tr>
-                        <tr>
-                            <td>Fecha de Nacimiento:</td>
-                            <td>
-                                {
-                                /*
-                                <DatePicker 
-                                            dateFormat='DD/MM/YYYY' maxDate={ moment() } 
-                                            fixedHeight peekNextMonth showMonthDropdown showYearDropdown dropdownMode='select'
-                                            selected={ this.state.fechaNacimiento } onChange={ this.handleDateChange }
-                                            />
-                                */
-                                }
-                                <Test />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <input type="submit" value="Submit" />
-            </form>
+            <div className='container formulario'>
+                <form onSubmit={ this.handleSubmit }>
+                    <div className='form-group'>
+                        <label htmlFor='email' className='form-control-label'>Correo:</label>
+                        <input type='email' id='email' name='email'
+                            placeholder='Correo' required className='form-control'
+                            value={ this.state.email } onChange={ this.handleInputChange } />
+                        <small id="ayudaEmail" className="form-text text-muted">
+                            No compartiremos tu correo con otros usuarios o empresas.
+                        </small>
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='contrasena' className='form-control-label'>Contraseña:</label>
+                        <input type='password' id='contrasena' name='contrasena'
+                            placeholder='Contraseña' required className='form-control'
+                            value={ this.state.contrasena } onChange={ this.handleInputChange } />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='nombre' className='form-control-label'>Nombre:</label>
+                        <input type='text' id='nombre' name='nombre'
+                            placeholder='Nombre' required className='form-control'
+                            value={ this.state.nombre } onChange={ this.handleInputChange } />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='apellido' className='form-control-label'>Apellido:</label>
+                        <input type='text' id='apellido' name='apellido'
+                            placeholder='Apellido' required className='form-control'
+                            value={ this.state.apellido } onChange={ this.handleInputChange } />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='dni' className='form-control-label'>DNI:</label>
+                        <input type='text' id='dni' name='dni'
+                            placeholder='Número de DNI' required className='form-control'
+                            value={ this.state.dni } onChange={ this.handleInputChange } />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='fechaNacimiento' className='form-control-label'>Fecha de Nacimiento:</label>
+                        <DatePicker id='fechaNacimiento' name='fechaNacimiento'
+                            dateFormat='DD/MM/YYYY' maxDate={ moment() } 
+                            fixedHeight peekNextMonth showMonthDropdown showYearDropdown dropdownMode='select'
+                            selected={ this.state.fechaNacimiento } onChange={ this.handleDateChange } />
+                    </div>
+                    <div className='form-group'>
+                        <input type="submit" value="Registrar Usuario" className='btn btn-primary' />
+                    </div>
+                </form>
+            </div>
         )
     }
 }
