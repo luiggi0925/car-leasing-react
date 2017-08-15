@@ -5,7 +5,6 @@ import './menu.css'
 
 export default class Menu extends React.Component {
     render() {
-        const idUsuario = window.sessionStorage.getItem('idUsuario')
         return (
             <div className="menu-wrap">
                 <nav className="menu">
@@ -23,7 +22,6 @@ export default class Menu extends React.Component {
                         </li>
                         <li><a href="#">Usuarios</a></li>
                         <li><Link to="/usuarios/registro">Nuevo Usuario</Link></li>
-                        <li><Link to={"/usuarios/" + idUsuario}>Mi Perfil</Link></li>
                     </ul>
                 </nav>
             </div>

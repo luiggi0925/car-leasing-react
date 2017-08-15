@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Lockr from 'lockr'
 import React from 'react'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -9,13 +10,8 @@ class PerfilUsuario extends React.Component {
         this.state = {
             idUsuario: props.match.params.id,
             usuario: {
-                id: 1,
-                nombre: 'Luiggi',
-                apellido: 'Mendoza',
-                email: 'a@b.com',
-                dni: '11223344',
-                fechaNacimiento: '11/12/1987'
-            }
+                id: 0
+             }
         }
     }
     componentDidMount() {
@@ -35,7 +31,8 @@ class PerfilUsuario extends React.Component {
         })
     }
     currentUser(usuario) {
-        if (usuario.id.toString() === window.sessionStorage.getItem('idUsuario')) {
+        const usuarioSession = Lockr.get('usuario')
+        if (usuarioSession && usuario.id === usuarioSession.id) {
             return (
                 <dl className='dl-horizontal'>
                     <dt>Nombre</dt>
