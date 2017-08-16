@@ -4,7 +4,7 @@ import React from 'react'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-class PerfilUsuario extends React.Component {
+class PerfilUsuarioCompleto extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -71,4 +71,4 @@ class PerfilUsuario extends React.Component {
     }
 }
 
-export default PerfilUsuario
+export default PerfilUsuarioCompleto

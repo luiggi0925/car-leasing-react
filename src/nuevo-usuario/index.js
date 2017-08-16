@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
-import './nuevo.css'
+import './nuevo_usuario.css'
 
-class FormNuevoUsuario extends React.Component {
+class NuevoUsuario extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -117,4 +117,4 @@ class FormNuevoUsuario extends React.Component {
     }
 }
 
-export default FormNuevoUsuario
+export default NuevoUsuario

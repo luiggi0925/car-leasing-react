@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-const Logueado = ({
+const PerfilUsuario = ({
     usuario,
     handleLogout
 }) => {
@@ -18,9 +18,9 @@ const Logueado = ({
     )
 }
 
-Logueado.propTypes = {
+PerfilUsuario.propTypes = {
   usuario: PropTypes.object.isRequired,
   handleLogout: PropTypes.func.isRequired
 }
 
-export default Logueado
+export default PerfilUsuario

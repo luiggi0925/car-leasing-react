@@ -4,8 +4,8 @@ import React from 'react'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Login from '../../components/login/login.js'
-import Logueado from '../../components/login/logueado.js'
+import Login from '../login'
+import PerfilUsuario from '../perfil-usuario'
 
 export default class AccesoUsuario extends React.Component {
     constructor(props) {
@@ -68,7 +68,7 @@ export default class AccesoUsuario extends React.Component {
     renderAutorizado() {
         let usuario = Lockr.get('usuario')
         return (
-            <Logueado usuario={ usuario } handleLogout={ this.logout.bind(this) } />
+            <PerfilUsuario usuario={ usuario } handleLogout={ this.logout.bind(this) } />
         )
     }
     render() {
