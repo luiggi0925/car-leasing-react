@@ -6,16 +6,25 @@ const PerfilUsuario = ({
     usuario,
     handleLogout
 }) => {
-    const link = `/usuarios/${usuario.id}`
-    return (
-        <div>
-            <span>
-                <Link to={link}>{ usuario.nombre }</Link>
-            </span>
-            <button className='btn btn-primary'
-                onClick={ handleLogout }>Cerrar Sesión</button>
-        </div>
-    )
+    if (usuario && usuario.id) {
+        const link = `/usuarios/${usuario.id}`
+        return (
+            <div>
+                <span>
+                    <Link to={link}>{ usuario.nombre }</Link>
+                </span>
+                <button className='btn btn-primary'
+                    onClick={ handleLogout }>Cerrar Sesión</button>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <button className='btn btn-primary'
+                    onClick={ handleLogout }>Cerrar Sesión</button>
+            </div>
+        )
+    }
 }
 
 PerfilUsuario.propTypes = {

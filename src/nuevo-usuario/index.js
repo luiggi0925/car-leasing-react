@@ -50,8 +50,8 @@ class NuevoUsuario extends React.Component {
             fechaNacimiento: moment(this.state.fechaNacimiento).format('YYYY-MM-DD'),
             dni: this.state.dni
         }
-        console.log(this.state)
-        console.log(this.data)
+        //console.log(this.state)
+        //console.log(this.data)
         axios.post('/usuarios', data, {
             baseURL: 'http://localhost:9090/',
             timeout: 5000,

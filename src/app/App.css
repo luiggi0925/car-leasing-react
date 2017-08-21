@@ -19,6 +19,26 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.boxedtheme {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  background: #f8f8f8;
+  -moz-box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+}
+
+.grid {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
 }
