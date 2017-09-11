@@ -1,41 +1,56 @@
-import PropTypes from 'prop-types'
+import axios from 'axios'
+import Lockr from 'lockr'
 import React from 'react'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import LoginComponent from './login.js'
 
-import './login.css'
-
-const Login = ({
-    email,
-    contrasena,
-    handleChange,
-    handleLogin
-}) => (
-    <div className='formulario '>
-        <div className='form-group'>
-            <label htmlFor='email' className='form-control-label'>Correo:</label>
-            <input type='email' id='email' name='email'
-                placeholder='Correo' required className='form-control'
-                value={ email } onChange={ e => handleChange(e.target.name, e.target.value) } />
-        </div>
-        <div className='form-group'>
-            <label htmlFor='contrasena' className='form-control-label'>Contraseña:</label>
-            <input type='password' id='contrasena' name='contrasena'
-                placeholder='Contraseña' required className='form-control'
-                value={ contrasena } onChange={ e => handleChange(e.target.name, e.target.value) } />
-        </div>
-        <div className='form-group'>
-            <input type='submit' value='Login' className='btn btn-primary'
-                onClick={ handleLogin } />
-        </div>
-    </div>
-)
-
-Login.propTypes = {
-  email: PropTypes.string.isRequired,
-  contrasena: PropTypes.string.isRequired,
-  handleLogin: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
+export default class Login extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            email: '',
+            contrasena: ''
+        }
+    }
+    handleInputChange(nombre, valor) {
+        this.setState({
+            [nombre]: valor
+        })
+    }
+    login(e) {
+        const data = {
+            email: this.state.email,
+            contrasena: this.state.contrasena
+        }
+        axios.post('/login', data, {
+            baseURL: 'http://localhost:9090/',
+            timeout: 5000,
+            headers: {'Content-Type': 'application/json'}
+        }).then(response => {
+            const usuario = {
+                id: response.data.id,
+                nombre: response.data.nombre,
+            }
+            console.log('Usuario logueado: ')
+            console.log(usuario)
+            Lockr.set('usuario', usuario)
+            this.props.history.push('/usuarios/nuevo')
+        }).catch(error => {
+            if (error.response && error.response.status === 401) {
+                alert('Credenciales incorrectas')
+            } else {
+                alert('No se logueó el usuario. Revisar.')
+                console.log(Object.assign({}, error))
+            }
+            console.log(error)
+        })
+    }
+    render() {
+        return (
+            <LoginComponent email={ this.state.email }
+                contrasena={ this.state.contrasena }
+                handleLogin={ this.login.bind(this) }
+                handleChange={ this.handleInputChange.bind(this) } />
+        )
+    }
 }
-
-export default Login

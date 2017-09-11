@@ -15,7 +15,7 @@ const Carro = ({
         <img alt="Imagen Carro" className="img-responsive"
             src={
             (carro.rutasImagenes && carro.rutasImagenes.length > 0) 
-                ? `http://localhost:9090/${carro.rutasImagenes[0]}` : noImage} />
+                ? `${carro.rutasImagenes[0]}` : noImage} />
         <a href={`/vehiculos/${carro.id}`}>Detalles</a>
     </div>
     )

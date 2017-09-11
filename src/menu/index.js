@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './menu.css'
+import './index.css'
 
 export default class Menu extends React.Component {
     render() {
@@ -15,10 +15,8 @@ export default class Menu extends React.Component {
                                 Vehículos<span className="arrow">&#9660;</span>
                             </a>
                             <ul className="sub-menu">
-                                <li> <a href="/vehiculos">Buscar</a></li>
-                                <li> <a href="#">Rentar un vehículo</a></li>
-                                <li> <a href="#">Mis vehículos</a></li>
-                                <li> <a href="#">Registrar</a></li>
+                                <li><a href="/vehiculos">Buscar</a></li>
+                                <li><a href="/vehiculos/nuevo">Registrar</a></li>
                             </ul>
                         </li>
                         <li><a href="/usuarios">Usuarios</a></li>

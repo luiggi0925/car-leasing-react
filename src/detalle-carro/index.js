@@ -57,7 +57,7 @@ export default class DetalleCarro extends React.Component {
                     <img alt="Imagen Carro" className="img-responsive"
                         src={
                         (carro.rutasImagenes && carro.rutasImagenes.length > 0) 
-                            ? `http://localhost:9090/${carro.rutasImagenes[0]}` : noImage} />
+                            ? `${carro.rutasImagenes[0]}` : noImage} />
                 </div>
                 <div>
                     <h3>Descripción</h3>
